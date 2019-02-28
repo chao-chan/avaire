@@ -39,14 +39,6 @@ administration:
         success: "Role **:role** role has been added to the level-up role list.\nThe server has `:slots` more level role slots available."
 
     AddReactionRoleCommand:
-        emoteDoestBelongToServer: "The emote does not belong to this server, you can only use emotes from this server as reaction emotes."
-        messageHasNoSlots: "The message doesn't have anymore reaction role slots available, you can remove existing reaction-roles to free up slots, or delete reaction role messages to add the role to a new reaction role message."
-        serverHasNoSlots: "Can't create new reaction role messages, the server doesn't have anymore reaction messages slots, you can deleting existing reaction role messages to free up slots, or add your reaction role to a reaction message if there are available slots on the message for more roles."
-        success: "The :role role has been registered as an reaction role for the :emote emote.\nThe message has `:roleSlots` more reaction-role slots available for the message, and `:messageSlots` reaction-message slots available."
-
-    AddSelfAssignableRoleCommand:
-        noSlotsLeft: "The server doesn't have any more self-assignable role slots, you can remove existing self-assignable roles to free up slots."
-        success: "Role **:role** role has been added to the self-assignable list.\nThe server has `:slots` more self-assignable roles slots available."
 
     AdministrateExperienceCommand:
         cantUseForBots: "You can't add, remove, or reset XP for bot accounts since they don't earn any, please select a normal user when using this command."
@@ -66,56 +58,56 @@ administration:
     AliasCommand:
         noSlotsLeft: "The server doesn't have any more alias slots, you can delete existing aliases to free up slots."
         alreadyExists: "There is already a custom alias called `{0}`"
+        message: "The `Artificial Intelligence` module has been **:status** for the :channel channel."
+        invalidAlias: "Invalid alias given, `{0}` is not registered as an alias."
+            enabled: "Enabled"
+            disabled: "Disabled"
+
+    AutoAssignRoleCommand:
+        noSlotsLeft: "The server doesn't have any more alias slots, you can delete existing aliases to free up slots."
+        alreadyExists: "There is already a custom alias called `{0}`"
         invalidCommand: "Invalid command given, I don't know of any command called `{0}`"
         invalidAlias: "Invalid alias given, `{0}` is not registered as an alias."
         created: "The `:alias` alias has been linked to `:command`\nThe server has `:slots` more aliases slots available."
         deleted: "The `:alias` alias has been deleted successfully."
+        status: ":user The **auto assign role** is currently set to **:role**"
 
-    AutoAssignRoleCommand:
-        higherInTheHierarchy:
+    BanCommand:
             user: ":user The **:role** role is positioned higher in the hierarchy than any role you have, you can't add roles with a higher ranking than you have."
             bot: ":user The **:role** role is positioned higher in the hierarchy, I can't give/remove this role from users."
         enabled: ":user **Auto assign role** on user join has been **enabled** and set to  **:role**"
         disabledNow: ":user **Auto assign role** on user join is now **disabled**."
         disabled: ":user **Auto assign role** on user join is currently **disabled**."
         status: ":user The **auto assign role** is currently set to **:role**"
-
-    BanCommand:
+    CategoriesCommand:
+        title: "Command Category Status for #{0}"
         mustMentionUser: "You must mention the user you want to ban."
         higherRole: "You can't ban people with a higher, or the same role as yourself."
         userHaveHigherRole: "I can't ban {0}, they have a higher role than me, if you want be to be able to ban the user, please readjust my role position to above {0} highest role."
         success: "**:target** was permanently banned by :user for \":reason\""
         failedToBan: "Failed to ban **:target** due to an error: :error"
-
-    CategoriesCommand:
+        invalidPrefix: "Invalid command prefix given, `{0}` is not a valid command prefix, all prefixes must **NOT** contain spaces and be between 1 and 16 characters long."
+        update:
         title: "Command Category Status for #{0}"
         status: ":emoteEnabled Enabled   :emoteDisabledInChannel Disabled in Channel   :emoteDisabledGlobally Disabled Globally"
 
-    ChangePrefixCommand:
+            global: "All commands in every command category has been reset to use the `:prefix` prefix."
         missingArgument: "Missing argument `category`, you must specify the command category you want to change/reset the prefix for."
         invalidCategory: "Invalid `category` given, there are no command categories that are called, or starts with `{0}`"
         invalidPrefix: "Invalid command prefix given, `{0}` is not a valid command prefix, all prefixes must **NOT** contain spaces and be between 1 and 16 characters long."
-        update:
+        invalidChannel: "Invalid channel given, the channel must be a valid text channel."
             global: "All commands in every command category now uses the `:prefix` prefix."
             category: "All commands in the `:category` command category now uses the `:prefix` prefix."
-        reset:
+        failedToUpdate: "Failed to save the changes to the database, please try again, if the issue persists, please contact one of my developers."
             global: "All commands in every command category has been reset to use the `:prefix` prefix."
             category: "All commands in the `:category` command category has been reset to use the `:prefix` prefix."
-
-    ChannelLevelCommand:
+        success: "The XP rewards for the :channel channel has been **:status**!"
+        status:
         invalidChannel: "Invalid channel given, the channel must be a valid text channel."
         cantTalkInChannel: "I can't talk in the {0} channel, so no users will be rewarded any XP for talking in the channel, if you want me to give users XP, please change my permission level for the channel so I can send messages in the channel."
         noChannelsWithRewardsDisabled: "There are currently no channels with the level rewards disabled, you can add one by using the `{0} <channel>` command"
         failedToUpdate: "Failed to save the changes to the database, please try again, if the issue persists, please contact one of my developers."
         listChannels: "All the channels mentioned below currently has their level rewards turned off, any channel not on this list is unaffected.\n\n:channels"
-        listChannelsTitle: "Channels with their Level Rewards disabled ({0})"
-        success: "The XP rewards for the :channel channel has been **:status**!"
-        status:
-            enabled: "Enabled"
-            disabled: "Disabled"
-
-    GoodbyeCommand:
-        note: "\nYou can customize the message by using `{0} [message]`"
         message: "The `Goodbye` module has been **:status** for the :channel channel."
         status:
             enabled: "Enabled"
@@ -132,61 +124,61 @@ administration:
             embed: "Goodbye messages will now be sent using embedded messages with the color: {0}"
             normal: "Now sending goodbye messages through normal messages."
 
-    IAmCommand:
+        changedToDefault: "The `Goodbye` module message has been set back to the default."
+        notSelfAssignable: ":user Invalid role, **:role** is not a self-assignable role."
+            enabled: "enabled"
+            disabled: "disabled"
+
+            embed: "Goodbye messages will now be sent using embedded messages with the color: {0}"
+            normal: "Now sending goodbye messages through normal messages."
+        roleIsHigherInTheHierarchy: ":user The role is higher in the role hierarchy, I can't give/remove the **:role** role from anyone."
+        message: ":user You no longer have the **:role** role!"
         notSelfAssignable: ":user Invalid role, **:role** is not a self-assignable role."
         roleIsHigherInTheHierarchy: ":user The role is higher in the role hierarchy, I can't give/remove the **:role** role from anyone."
         message: ":user You now have the **:role** role!"
-
-    IAmNotCommand:
+        higherOrSameRole: "You can't kick people with a higher, or the same role as yourself."
+        cantKickUser: "I can't kick {0}, they have a higher role than me, if you want be to be able to kick the user, please readjust my role position to above {0} highest role."
         notSelfAssignable: ":user Invalid role, **:role** is not a self-assignable role."
         roleIsHigherInTheHierarchy: ":user The role is higher in the role hierarchy, I can't give/remove the **:role** role from anyone."
         message: ":user You no longer have the **:role** role!"
-
-    KickCommand:
+    LanguageCommand:
+        invalidLanguageCode: "Invalid language code given, `{0}` is not a valid language code, or it is not yet supported!"
         mustMentionUser: "You must mention the user you want to kick."
         higherOrSameRole: "You can't kick people with a higher, or the same role as yourself."
         cantKickUser: "I can't kick {0}, they have a higher role than me, if you want be to be able to kick the user, please readjust my role position to above {0} highest role."
-        success: "**:target** was kicked by :user for \":reason\""
+    LevelAlertsCommand:
         error: "Failed to kick **:target** due to an error: :error"
 
-    LanguageCommand:
+        status:
         invalidLanguageCode: "Invalid language code given, `{0}` is not a valid language code, or it is not yet supported!"
         changed: "The servers language has been successfully been updated to use the :name language!"
         note: "AvaIre supports several user-contributed languages that you can select with this command. Translations may not be 100% accurate or complete.\nTo select a language use `{0} <code>`"
 
-    LevelAlertsCommand:
+        message: "`Levels & Experience` has been `:status` for the server.:note"
         message: "`Levels up alerts` has been `:status` for the server.:note"
         note: "\nAll level up messages will be logged into the <#{0}> channel."
-        status:
+            enabled: "Enabled"
             enabled: "Enabled"
             disabled: "Disabled"
-
-    LevelCommand:
+    LevelHierarchyCommand:
+        invalidTypeGiven: "Invalid type given, to toggle level hierarchy on or off, you must use either `on` or `off`."
         message: "`Levels & Experience` has been `:status` for the server.:note"
         note: "\nLevel alerts are current `{0}`, you can toggle them on or off with `{1}levelalerts`"
         status:
             enabled: "Enabled"
             disabled: "Disabled"
 
-    LevelHierarchyCommand:
+    LevelModifierCommand:
         invalidTypeGiven: "Invalid type given, to toggle level hierarchy on or off, you must use either `on` or `off`."
         message: "Level up hierarchy has been `:status` for the server."
         statusMessage: "Level up hierarchy is currently `:status`, you can toggle it on or off with `:command`"
-        status:
+        statusMessage: "The server is currently using a **:modifier** modifier for levels and experience.\n\n**Required XP to reach some levels**\n"
             enabled: "Enabled"
             disabled: "Disabled"
 
-    LevelModifierCommand:
+        noAliases: "The server doesn't have any aliases right now, you can create one using the\n`{0}alias <alias> <command>` command"
         invalidNumberGiven: "Invalid modifier given, the modifier much be a positive percentage between `0.01%` and `500%`"
         resetToDefault: "The level modifier has been reset back to using the default **:modifier** modifier."
-        changedTo: "The level and experience modifier have been change to **:modifier**."
-        statusMessage: "The server is currently using a **:modifier** modifier for levels and experience.\n\n**Required XP to reach some levels**\n"
-        level: "Level {0}"
-
-    ListAliasesCommand:
-        noAliases: "The server doesn't have any aliases right now, you can create one using the\n`{0}alias <alias> <command>` command"
-        listAliases: "List of Aliases ({0})"
-
     ListLevelRolesCommand:
         noLevelRoles: "There are currently no level roles, an administrator can add roles to the level up table using the `:command` command"
         listRoles: "List of Level Roles ({0})"
@@ -395,7 +387,7 @@ fun:
 
     RollCommand:
         invalidValueGiven: "Valeur fournie invalide `{0}`, `{1}` doit être un nombre!"
-        rolledNumber: ":user a obtenu **:number** parmis :min - :max"
+        palindrome: "Tu as inversé un palindrome, à quoi t'attendais tu ?"
 
     SayCommand:
         userMissingPermissions: "You can't use the this command for the {0} channel, you must have the message write and message manage permissions for the channel to use the command for the channel."
